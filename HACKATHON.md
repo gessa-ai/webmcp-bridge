@@ -37,10 +37,10 @@ on every call.
 
 ## Judge path
 
-1. Run `npm run verify`, then `npm run reference`, and open the printed local
-   URL in a WebMCP-enabled browser. This is the canonical reference until a
-   replacement hosted preview is independently verified live; it proves
-   validation and idempotency against the same-origin reference host.
+1. Open <https://gessa-ai.github.io/webmcp-bridge/> for the static live
+   reference. Run `npm run verify`, then `npm run reference`, for the local
+   same-origin reference that additionally proves validation, session
+   isolation, and idempotency.
 2. Use Site tools to read and increment the visible counter; use the manual
    button to see the same backend state change without WebMCP.
 3. Inspect `registrationController.ts` for the literal `registerTool` call and

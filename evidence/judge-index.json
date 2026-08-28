@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "gessa.webmcp.judge-index.v1",
+  "project": "@gessa/webmcp-bridge",
+  "claims": [
+    {
+      "id": "production-source-identity",
+      "claim": "The production manifest exposes the public bridge version and deterministic source hash; verification fails on logic drift.",
+      "evidence": ["src/buildIdentity.ts", "scripts/verify-build-identity.mjs"]
+    },
+    {
+      "id": "literal-imperative-registration",
+      "claim": "The bridge calls document.modelContext.registerTool through the imperative API.",
+      "evidence": ["src/registrationController.ts"]
+    },
+    {
+      "id": "abort-owned-lifecycle",
+      "claim": "Changed, removed, and disposed tools are unregistered by aborting their registration signal.",
+      "evidence": ["src/registrationController.ts", "tests/registrationController.test.ts"]
+    },
+    {
+      "id": "trusted-coordinate-binding",
+      "claim": "Host-trusted workspace, game, and invocation coordinates can be removed from model-facing schemas.",
+      "evidence": ["src/schemaProjection.ts", "tests/schemaProjection.test.ts"]
+    },
+    {
+      "id": "bounded-egress",
+      "claim": "Tool output must be JSON-serializable and fit the configured byte limit.",
+      "evidence": ["src/resultProjection.ts", "tests/resultProjection.test.ts"]
+    },
+    {
+      "id": "independent-reference",
+      "claim": "The public project runs without Gessa Cloud and proves state, validation, idempotency, manual/WebMCP parity, and unregister behavior.",
+      "evidence": [
+        "examples/reference/index.html",
+        "examples/reference/reference.js",
+        "examples/reference/server.mjs",
+        "examples/reference/reference-smoke.mjs"
+      ]
+    },
+    {
+      "id": "gessa-projection-coverage",
+      "claim": "The dated Gessa integration snapshot projects all 214 canonical action owners while granting only authorized contextual subsets.",
+      "evidence": ["evidence/gessa-coverage-snapshot.json", "HACKATHON.md"]
+    },
+    {
+      "id": "proprietary-boundary",
+      "claim": "The submitted bridge is complete and independently functional; the hosted Gessa engine is a disclosed proprietary integration dependency.",
+      "evidence": ["HACKATHON.md", "ARCHITECTURE.md", "SECURITY.md"]
+    }
+  ],
+  "verification": {
+    "command": "npm run verify",
+    "bridgeSourceHash": "41b12f66aded9c6d9485657a6f9858bb234505ee85862cf8875f93c52805fa7e",
+    "expectedUnitTests": 20,
+    "expectedReferenceSmoke": "passed"
+  }
+}

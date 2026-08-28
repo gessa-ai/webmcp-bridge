@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A live reference for the MIT-licensed Gessa WebMCP bridge." />
+    <title>Gessa WebMCP Bridge</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #07100e;
+        color: #f5fbf8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 12% 4%, rgba(83, 238, 180, .2), transparent 32rem),
+          radial-gradient(circle at 92% 86%, rgba(121, 94, 255, .19), transparent 34rem),
+          #07100e;
+      }
+      main { width: min(72rem, calc(100vw - 2rem)); margin: 0 auto; padding: clamp(2rem, 7vw, 6rem) 0; }
+      .eyebrow { color: #79efc1; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; font-size: .76rem; }
+      h1 { max-width: 14ch; margin: .65rem 0 1rem; font-size: clamp(2.8rem, 8vw, 6.7rem); line-height: .92; letter-spacing: -.065em; }
+      .lead { max-width: 44rem; color: #bdcbc6; font-size: clamp(1.05rem, 2vw, 1.32rem); line-height: 1.6; }
+      .grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(18rem, .65fr); gap: 1rem; margin-top: 3rem; }
+      .card { border: 1px solid rgba(199, 229, 217, .17); border-radius: 1.35rem; padding: clamp(1.35rem, 3vw, 2.25rem); background: rgba(13, 27, 23, .82); box-shadow: 0 1.6rem 5rem rgba(0, 0, 0, .24); }
+      .demo { background: linear-gradient(145deg, rgba(22, 50, 41, .93), rgba(20, 22, 42, .9)); }
+      h2 { margin: 0 0 .75rem; font-size: 1.4rem; }
+      p { line-height: 1.55; }
+      code { color: #91f5d0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .status { display: inline-flex; align-items: center; gap: .55rem; border-radius: 999px; padding: .55rem .8rem; background: rgba(0, 0, 0, .25); }
+      .status::before { content: ""; width: .6rem; height: .6rem; border-radius: 50%; background: #f3bd73; box-shadow: 0 0 1rem currentColor; }
+      [data-status="ready"]::before { background: #75f0bd; }
+      .counter { margin: 1.4rem 0; font-size: clamp(3.5rem, 8vw, 6rem); font-variant-numeric: tabular-nums; font-weight: 800; letter-spacing: -.06em; }
+      .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+      button, .link {
+        display: inline-flex; align-items: center; justify-content: center; min-height: 2.8rem; padding: .7rem 1rem;
+        border: 0; border-radius: .72rem; background: #77e9bd; color: #06130e; font: inherit; font-weight: 780;
+        text-decoration: none; cursor: pointer;
+      }
+      button.secondary, .link.secondary { background: #263830; color: #eef8f4; }
+      ul { padding-left: 1.2rem; color: #bdcbc6; }
+      li + li { margin-top: .65rem; }
+      footer { display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: center; margin-top: 1rem; color: #91a29c; font-size: .9rem; }
+      footer a { color: #b7f5dd; }
+      @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow">Gessa · WebMCP Challenge</div>
+      <h1>Give the web an action layer.</h1>
+      <p class="lead">This live reference projects an existing authorized tool registry into page-scoped WebMCP tools—without moving business logic, security, or state authority into the browser.</p>
+
+      <section class="grid" aria-label="Reference demo and bridge guarantees">
+        <article class="card demo">
+          <h2>Working reference</h2>
+          <p id="status" class="status" data-status="starting">Starting bridge…</p>
+          <div class="counter" id="counter" aria-live="polite">0</div>
+          <div class="actions">
+            <button id="manual-increment" type="button">Increment visibly</button>
+            <button class="secondary" id="dispose" type="button">Unregister tools</button>
+          </div>
+          <p><small>In a WebMCP-enabled browser, ask the agent to call <code>reference_read_counter</code> or <code>reference_increment_counter</code>. The button exercises the same state path.</small></p>
+        </article>
+
+        <aside class="card">
+          <h2>What this proves</h2>
+          <ul>
+            <li>Imperative registration and abort-owned teardown.</li>
+            <li>Exact JSON Schema projection with bounded results.</li>
+            <li>Progressive enhancement when WebMCP is unavailable.</li>
+            <li>A framework-neutral adapter with no Gessa engine dependency.</li>
+          </ul>
+          <a class="link secondary" href="https://github.com/gessa-ai/webmcp-bridge">Source and verification</a>
+        </aside>
+      </section>
+
+      <footer>
+        <span>MIT licensed · <code>@gessa/webmcp-bridge</code></span>
+        <a href="./HACKATHON.md">Submission boundary</a>
+        <a href="./ARCHITECTURE.md">Architecture</a>
+        <a href="./evidence/judge-index.json">Judge index</a>
+      </footer>
+    </main>
+    <script type="module" src="./examples/reference/reference.js"></script>
+  </body>
+</html>

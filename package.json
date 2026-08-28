@@ -1,0 +1,67 @@
+{
+  "name": "@gessa/webmcp-bridge",
+  "version": "0.1.1",
+  "description": "Framework-neutral WebMCP projection and browser registration bridge.",
+  "author": "Gessa AI",
+  "license": "MIT",
+  "homepage": "https://gessa-ai.github.io/webmcp-bridge/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gessa-ai/webmcp-bridge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gessa-ai/webmcp-bridge/issues"
+  },
+  "keywords": [
+    "webmcp",
+    "mcp",
+    "agents",
+    "browser",
+    "model-context-protocol"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "tests",
+    "scripts",
+    "examples",
+    "evidence",
+    "index.html",
+    "ARCHITECTURE.md",
+    "HACKATHON.md",
+    "SECURITY.md",
+    "tsconfig.json",
+    "vitest.config.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "reference": "node examples/reference/server.mjs",
+    "typecheck": "tsc -b --pretty false",
+    "test": "vitest --config vitest.config.ts run tests",
+    "test:reference": "node examples/reference/reference-smoke.mjs",
+    "verify:identity": "node scripts/verify-build-identity.mjs",
+    "verify": "npm run verify:identity && npm run typecheck && npm test && npm run test:reference && node --check examples/reference/reference.js && node --check examples/reference/server.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.7"
+  }
+}

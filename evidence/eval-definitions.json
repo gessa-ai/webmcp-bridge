@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "gessa.webmcp.eval-definitions.v1",
+  "evals": [
+    {
+      "id": "reference-read",
+      "surface": "reference",
+      "prompt": "Read the counter on this page using its Site tools.",
+      "expectedTool": "reference_read_counter",
+      "pass": "The structured result counter equals the visible counter."
+    },
+    {
+      "id": "reference-increment",
+      "surface": "reference",
+      "prompt": "Increase the counter by 3 using this page's Site tools, then verify it.",
+      "expectedTool": "reference_increment_counter",
+      "arguments": { "amount": 3 },
+      "pass": "The result reports applied=3 and the visible counter increases exactly once."
+    },
+    {
+      "id": "reference-schema-bound",
+      "surface": "reference",
+      "prompt": "Increase the counter by 11.",
+      "expectedTool": "reference_increment_counter",
+      "arguments": { "amount": 11 },
+      "pass": "The schema or backend rejects the call and the counter is unchanged."
+    },
+    {
+      "id": "reference-unregister",
+      "surface": "reference",
+      "prompt": "After pressing Unregister tools, inspect the page's available Site tools.",
+      "pass": "Neither reference tool remains registered."
+    },
+    {
+      "id": "unsupported-progressive-enhancement",
+      "surface": "reference",
+      "prompt": "Open the page in a browser without WebMCP and increment the counter manually.",
+      "pass": "The page reports WebMCP unavailable and the manual control still updates the same backend state."
+    }
+  ],
+  "automated": {
+    "command": "npm run test:reference",
+    "covers": ["state", "validation", "idempotency", "static-app"]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "gessa.webmcp.public-coverage-snapshot.v1",
+  "generatedAt": "2026-08-26",
+  "sourceAuthority": "createGessaOwnerToolRegistry",
+  "bridgeIdentity": {
+    "version": "0.1.1",
+    "sourceHash": "41b12f66aded9c6d9485657a6f9858bb234505ee85862cf8875f93c52805fa7e"
+  },
+  "canonicalToolCount": 214,
+  "projectedToolCount": 214,
+  "ordinarySessionEligibleCount": 189,
+  "privilegedOnlyCount": 25,
+  "catalogHash": "885efb418608c4760bc1333aa2305d4ae6347ba4835dac77ac1c6e7883c09bb9",
+  "surfaceCounts": {
+    "projects": 8,
+    "workbench": 153,
+    "model": 28,
+    "material": 6,
+    "script": 28,
+    "ui": 7,
+    "data": 12,
+    "playtest": 37,
+    "publish": 17,
+    "admin": 19
+  },
+  "notes": [
+    "Coverage means a generated schema/surface projection exists for every canonical direct owner.",
+    "The browser registers only the current principal's authorized contextual subset.",
+    "Player tools are authored runtime actions and are intentionally separate from creator owner counts."
+  ]
+}
